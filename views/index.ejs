@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src = 'https://code.jquery.com/jquery-3.3.1.min.js'></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+  </head>
+  <body>
+    <div class = "maindata">Ready</div>
+    <input type = "text" class = "command-input" id = "command-input" placeholder="Send Command to Sensor">
+    <button type="button" class="btn btn-success btn-lg btn-start">Start</button>
+    <button type="button" class="btn btn-danger btn-lg btn-stop" >Stop</button>
+    <button type="button" class="btn btn-secondary btn-lg btn-tare">Tare</button>
+    <button type="button" class="btn btn-primary btn-lg btn-send-command">Send Command</button>
+
+  </body>
+</html>
+
+<script>
+  var socket = io();
+  socket.on("data", function(msg){    
+    $(".maindata").replaceWith("<div class = 'maindata'<h2>"+msg+"</h2></div>");
+    console.log(msg)
+  });
+
+  $(".btn-success").on('click',function(event){
+    var thiscommand = "O0W0";
+    $.ajax({
+        method: 'POST',
+        url: '/command',
+        data: {command: thiscommand}
+    }).done(function(response){
+        $('#command-input').val("");
+    });
+  });
+
+  $(".btn-danger").on('click',function(event){
+    var thiscommand = "";
+    $.ajax({
+        method: 'POST',
+        url: '/command',
+        data: {command: thiscommand}
+    }).done(function(response){
+    });
+  });
+
+  $(".btn-secondary").on('click',function(event){
+    var thiscommand = "CT0";
+    $.ajax({
+        method: 'POST',
+        url: '/command',
+        data: {command: thiscommand}
+    }).done(function(response){
+    });
+  });
+
+  $(".btn-primary").on('click',function(event){
+    var thiscommand = document.getElementById('command-input').value;
+    $.ajax({
+        method: 'POST',
+        url: '/command',
+        data: {command: thiscommand}
+    }).done(function(response){
+        $('#command-input').val("");
+    });
+  });
+             
+</script>

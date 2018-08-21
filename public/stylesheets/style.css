@@ -1,0 +1,71 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.maindata{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 150px;
+  text-align: center;
+
+}
+
+.btn-start{
+  position: absolute;
+  bottom: 30px;
+  left:30px;
+  width: 30%;
+  height: 10%;
+  font-size: 50px;
+}
+
+.btn-stop{
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 30%;
+  height: 10%;
+  font-size: 50px;
+
+}
+
+.btn-tare{
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  width: 30%;
+  height: 10%;
+  font-size: 50px;
+
+}
+
+.btn-send-command{
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 15%;
+  height: 7%;
+  font-size: 30px;
+
+}
+
+.command-input{
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 80%;
+  height: 7%;
+  font-size: 30px;
+}
+
+
+a {
+  color: #00B7FF;
+}
+
+
